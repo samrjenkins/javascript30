@@ -62,12 +62,28 @@
       background:black;
       position: absolute;
       top:50%;
+      transform-origin: right;
     }
 
   </style>
 
   <script>
+    const setTime = () => {
+      const date = new Date()
+      const hours = date.getHours()
+      const minutes = date.getMinutes()
+      const seconds = date.getSeconds()
+      const degSeconds = 360 * seconds / 60 - 270
+      const degMinutes = 360 * minutes / 60 - 270
+      const degHours = 360 * hours / 12 - 270
+      document.querySelector(".second-hand").style.transform = `rotate(${degSeconds}deg)`;
+      document.querySelector(".min-hand").style.transform = `rotate(${degMinutes}deg)`;
+      document.querySelector(".hour-hand").style.transform = `rotate(${degHours}deg)`;
+    }
 
+    setInterval(setTime, 1000)
+
+    setTime()
 
   </script>
 </body>
