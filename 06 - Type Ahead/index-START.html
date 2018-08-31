@@ -31,7 +31,13 @@
   function displayMatches() {
     const query = this.value
     const matches = findMatches(query)
-    console.log(matches)
+    console.table(matches)
+    const html = matches.map((match) => {
+      return`
+        <li>${match.city}</li>
+      `
+    }).join(" ")
+    document.querySelector(".suggestions").innerHTML = html
   }
 
   const input = document.querySelector("input")
